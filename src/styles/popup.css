@@ -1,0 +1,147 @@
+@font-face {
+  font-family: "ITC Bauhaus";
+  src: url("/src/fonts/ITC-Bauhaus-Medium.ttf");
+  src: url("/src/fonts/ITC-Bauhaus-Medium.eot");
+  src: url("/src/fonts/ITC-Bauhaus-Medium.woff");
+  src: url("/src/fonts/ITC-Bauhaus-Medium.woff2");
+}
+
+/* Formateamos el label que servirá de contenedor */
+.switch__container {
+  position: relative;
+}
+.switch {
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  width: 40px;
+  height: 24px;
+}
+
+/* Ocultamos el checkbox html */
+.switch__input {
+  display: none;
+}
+
+/* Formateamos la caja del interruptor sobre la cual se deslizará la perilla de control o slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* Pintamos la perilla de control o slider usando el selector before */
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+/* Cambiamos el color de fondo cuando el checkbox esta activado */
+.switch__input:checked + .slider {
+  background-color: #31d7a2;
+}
+
+/* Deslizamos el slider a la derecha cuando el checkbox esta activado */
+.switch__input:checked + .slider:before {
+  -webkit-transform: translateX(16px);
+  -ms-transform: translateX(16px);
+  transform: translateX(16px);
+}
+
+/* Aplicamos efecto de bordes redondeados en slider y en el fondo del slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+main {
+  padding: 2em 1em;
+  min-width: 200px;
+}
+
+.header__icon {
+  display: block;
+  margin: 0 auto;
+}
+
+.header__icon.disabled {
+  -webkit-filter: grayscale(100%);
+  filter: grayscale(100%);
+}
+
+.header__title {
+  margin: 0;
+  padding-bottom: 0.5em;
+  text-align: center;
+  font-family: "ITC Bauhaus";
+  font-size: 24px;
+  font-weight: bold;
+  color: #000000;
+  border-bottom: 1px solid #c5c7c9;
+}
+
+.section--keywords {
+  padding-top: 2em;
+}
+
+.keywords__title {
+  display: block;
+  margin: 0 auto;
+  padding-bottom: 1em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.keywords__input {
+  display: flex;
+  width: 100%;
+}
+
+.keywords__field {
+  width: 70%;
+  height: 20px;
+  padding: 5px;
+}
+
+.keywords__field:focus {
+  outline: none;
+  border: 1px solid #000000;
+}
+
+.keywords__submit {
+  width: 30%;
+  font-weight: bold;
+  background-color: #31d7a2;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.keywords__submit:hover {
+  background-color: #3ce6b0;
+  transition: 0.2s;
+}
+
+.keywords__submit:focus {
+  outline: none;
+}
+
+.keywords__submit:active {
+  border: 1px solid #000000;
+}
