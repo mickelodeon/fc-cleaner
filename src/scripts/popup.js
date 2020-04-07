@@ -1,16 +1,14 @@
-// "use strict";
+const SWITCH_SELECTOR = ".switch__input";
+const LOGO_SELECTOR = ".header__logo";
 
-// let changeColor = document.getElementById("changeColor");
+const popupSwitch = document.querySelector(SWITCH_SELECTOR);
+
 // chrome.storage.sync.get("color", function (data) {
 //   changeColor.style.backgroundColor = data.color;
 //   changeColor.setAttribute("value", data.color);
 // });
 
-// changeColor.onclick = function (element) {
-//   let color = element.target.value;
-//   chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-//     chrome.tabs.executeScript(tabs[0].id, {
-//       code: 'document.body.style.backgroundColor = "' + color + '";',
-//     });
-//   });
-// };
+popupSwitch.onclick = function (element) {
+  const headerLogo = document.querySelector(LOGO_SELECTOR);
+  headerLogo.classList.toggle("disabled");
+};

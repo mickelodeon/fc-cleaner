@@ -75,14 +75,16 @@ main {
   min-width: 200px;
 }
 
-.header__icon {
+.header__logo {
   display: block;
   margin: 0 auto;
+  transition: 0.4s;
 }
 
-.header__icon.disabled {
+.header__logo.disabled {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
+  transition: 0.4s;
 }
 
 .header__title {
