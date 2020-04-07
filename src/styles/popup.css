@@ -12,7 +12,6 @@
   --grey-light: #c5c7c9;
 }
 
-/* Formateamos el label que servirá de contenedor */
 .switch__container {
   position: relative;
 }
@@ -24,7 +23,6 @@
   height: 24px;
 }
 
-/* Ocultamos el checkbox html */
 .switch__input {
   display: none;
 }
@@ -44,10 +42,10 @@
 .slider:before {
   content: "";
   position: absolute;
-  height: 18px;
-  width: 18px;
   left: 3px;
   bottom: 3px;
+  width: 18px;
+  height: 18px;
   background-color: white;
   -webkit-transition: 0.4s;
   transition: 0.4s;
@@ -72,8 +70,8 @@
 }
 
 main {
-  min-width: 200px;
-  padding: 2em 1em 0 1em;
+  width: 200px;
+  padding: 2em 1em 1em;
 }
 
 .header__logo {
@@ -148,6 +146,30 @@ main {
 
 .keywords__submit:active {
   border: 1px solid #000000;
+}
+
+.keywords__block {
+  margin-bottom: 2em;
+}
+
+.keywords__item {
+  position: relative;
+  margin-right: 0.5em;
+  padding: 1px 20px 1px 5px;
+  background-color: var(--grey-light);
+  border: 1px solid var(--grey-light);
+  border-radius: 15px;
+}
+
+.keywords__item--remove {
+  position: absolute;
+  top: 50%;
+  right: 5px;
+  width: 8px;
+  height: 8px;
+  fill: #ffffff;
+  cursor: pointer;
+  transform: translateY(-50%);
 }
 
 .keywords__reset--button {
