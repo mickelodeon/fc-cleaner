@@ -156,9 +156,11 @@ main {
   position: relative;
   margin-right: 0.5em;
   padding: 1px 20px 1px 5px;
+  line-height: 2em;
   background-color: var(--grey-light);
   border: 1px solid var(--grey-light);
   border-radius: 15px;
+  white-space: nowrap;
 }
 
 .keywords__item--remove {
