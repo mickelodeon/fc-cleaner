@@ -12,19 +12,34 @@ popupSwitch.onclick = function () {
   headerLogo.classList.toggle("disabled");
 };
 
-keywordsSubmit.onclick = function () {
-  if (keywordsInput.value != "") {
-    keywordsList.push(keywordsInput.value);
-    keywordsInput.value = "";
-    updateList();
-    keywordsInput.focus();
+keywordsInput.addEventListener("keydown", function (e) {
+  if (e.keyCode === 13) {
+    submitKeyword();
   }
+});
+
+keywordsSubmit.onclick = function () {
+  submitKeyword();
 };
 
 keywordsReset.onclick = function () {
   keywordsList = [];
   keywordsRemovers = [];
   keywordsBlock.innerHTML = "";
+  if (localStorage.getItem("keywordsList") !== null) {
+    localStorage.removeItem("keywordsList");
+    updateList();
+  }
+};
+
+const submitKeyword = function () {
+  if (keywordsInput.value != "") {
+    keywordsList.push(keywordsInput.value);
+    localStorage.setItem("keywordsList", keywordsList);
+    updateList();
+    keywordsInput.value = "";
+    keywordsInput.focus();
+  }
 };
 
 const updateList = function () {
@@ -55,6 +70,12 @@ const updateRemovers = function () {
 const removeKeyword = function (index) {
   if (index > -1) {
     keywordsList.splice(index, 1);
+    localStorage.setItem("keywordsList", keywordsList);
   }
   updateList();
 };
+
+if (localStorage.getItem("keywordsList") != null) {
+  keywordsList = localStorage.getItem("keywordsList").split(",");
+  updateList();
+}
