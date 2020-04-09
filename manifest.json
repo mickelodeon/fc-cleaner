@@ -22,6 +22,12 @@
     "48": "src/images/fc_cleaner48.png",
     "128": "src/images/fc_cleaner128.png"
   },
+  "content_scripts": [
+    {
+      "matches": ["*://*.forocoches.com/*"],
+      "js": ["src/scripts/content.js"]
+    }
+  ],
   "options_page": "src/templates/options.html",
   "manifest_version": 2
 }
