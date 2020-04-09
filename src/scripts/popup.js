@@ -79,3 +79,11 @@ if (localStorage.getItem("keywordsList") != null) {
   keywordsList = localStorage.getItem("keywordsList").split(",");
   updateList();
 }
+
+chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+  chrome.tabs.sendMessage(tabs[0].id, { keywordsList: keywordsList }, function (
+    response
+  ) {
+    console.log(response.farewell);
+  });
+});
