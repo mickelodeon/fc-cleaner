@@ -1,13 +1,30 @@
+console.log("content!");
+
 var threadTitles = document.querySelectorAll('*[id^="thread_title_"]');
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  sendResponse({ farewell: "Hi from Forocoches front page!" });
+
   if (request.keywordsList.length >= 1) {
-    sendResponse({ farewell: "Hi from Forocoches front page!" });
-    searchThreads(request.keywordsList);
+    localStorage.setItem("keywordsList", request.keywordsList);
+  } else {
+    localStorage.removeItem("keywordsList");
   }
+
+  searchThreads(request.keywordsList);
 });
 
+const cleanThreads = function () {
+  console.log("cleaning threads!");
+  const hiddenThreads = document.getElementsByClassName("hidden__thread");
+  for (i = 0; i < hiddenThreads.length; i++) {
+    console.log(hiddenThreads[i]);
+    hiddenThreads[i].classList.remove("hidden__thread");
+  }
+};
+
 const searchThreads = function (keywordsList) {
+  cleanThreads();
   for (i = 0; i < keywordsList.length; i++) {
     for (j = 0; j < threadTitles.length; j++) {
       if (threadTitles[j].textContent.includes(keywordsList[i])) {
@@ -18,5 +35,13 @@ const searchThreads = function (keywordsList) {
 };
 
 const hideThread = function (thread) {
-  thread.style.opacity = "0";
+  thread.classList.add("hidden__thread");
 };
+
+if (localStorage.getItem("keywordsList") !== null) {
+  if (localStorage.getItem("keywordsList").length >= 1) {
+    searchThreads(localStorage.getItem("keywordsList").split(","));
+  } else {
+    localStorage.removeItem("keywordsList");
+  }
+}

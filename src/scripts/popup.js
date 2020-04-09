@@ -26,10 +26,8 @@ keywordsReset.onclick = function () {
   keywordsList = [];
   keywordsRemovers = [];
   keywordsBlock.innerHTML = "";
-  if (localStorage.getItem("keywordsList") !== null) {
-    localStorage.removeItem("keywordsList");
-    updateList();
-  }
+  localStorage.removeItem("keywordsList");
+  updateList();
 };
 
 const submitKeyword = function () {
@@ -56,6 +54,7 @@ const updateList = function () {
   keywordsBlock.innerHTML = keywordsContent;
   keywordsRemovers = document.querySelectorAll(".keywords__item--remove");
   updateRemovers();
+  updateContentInfo();
 };
 
 const updateRemovers = function () {
@@ -75,15 +74,21 @@ const removeKeyword = function (index) {
   updateList();
 };
 
+const updateContentInfo = function () {
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(
+      tabs[0].id,
+      { keywordsList: keywordsList },
+      function (response) {}
+    );
+  });
+};
+
 if (localStorage.getItem("keywordsList") != null) {
-  keywordsList = localStorage.getItem("keywordsList").split(",");
-  updateList();
+  if (localStorage.getItem("keywordsList").length >= 1) {
+    keywordsList = localStorage.getItem("keywordsList").split(",");
+    updateList();
+  }
 }
 
-chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-  chrome.tabs.sendMessage(tabs[0].id, { keywordsList: keywordsList }, function (
-    response
-  ) {
-    console.log(response.farewell);
-  });
-});
+updateContentInfo();

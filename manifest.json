@@ -25,6 +25,7 @@
   "content_scripts": [
     {
       "matches": ["*://*.forocoches.com/*"],
+      "css": ["src/styles/content.css"],
       "js": ["src/scripts/content.js"]
     }
   ],
