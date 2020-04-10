@@ -120,6 +120,7 @@ body.disabled .header__logo {
   width: 70%;
   height: 20px;
   padding: 5px;
+  border: 1px solid var(--grey-light);
 }
 
 .keywords__field:focus {
