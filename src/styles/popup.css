@@ -9,6 +9,7 @@
 :root {
   --green-dark: #31d7a2;
   --green-light: #3ce6b0;
+  --grey-dark: #9e9f9f;
   --grey-light: #c5c7c9;
 }
 
@@ -80,7 +81,7 @@ main {
   transition: 0.4s;
 }
 
-.header__logo.disabled {
+body.disabled .header__logo {
   -webkit-filter: grayscale(100%);
   filter: grayscale(100%);
   transition: 0.4s;
@@ -140,6 +141,14 @@ main {
   transition: 0.2s;
 }
 
+body.disabled .keywords__submit {
+  background-color: var(--grey-dark);
+}
+
+body.disabled .keywords__submit:hover {
+  background-color: var(--grey-light);
+}
+
 .keywords__submit:focus {
   outline: none;
 }
@@ -183,4 +192,12 @@ main {
 
 .keywords__reset--button:hover {
   color: var(--green-light);
+}
+
+body.disabled .keywords__reset--button {
+  color: var(--grey-dark);
+}
+
+body.disabled .keywords__reset--button:hover {
+  color: var(--grey-light);
 }

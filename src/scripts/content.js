@@ -1,5 +1,3 @@
-console.log("content!");
-
 var threadTitles = document.querySelectorAll('*[id^="thread_title_"]');
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
@@ -15,10 +13,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 const cleanThreads = function () {
-  console.log("cleaning threads!");
   const hiddenThreads = document.getElementsByClassName("hidden__thread");
-  for (i = 0; i < hiddenThreads.length; i++) {
-    console.log(hiddenThreads[i]);
+  for (i = hiddenThreads.length - 1; i >= 0; i--) {
     hiddenThreads[i].classList.remove("hidden__thread");
   }
 };
