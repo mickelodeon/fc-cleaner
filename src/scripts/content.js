@@ -23,7 +23,18 @@ const searchThreads = function (keywordsList) {
   cleanThreads();
   for (i = 0; i < keywordsList.length; i++) {
     for (j = 0; j < threadTitles.length; j++) {
-      if (threadTitles[j].textContent.includes(keywordsList[i])) {
+      if (
+        threadTitles[j].textContent
+          .toLowerCase()
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .includes(
+            keywordsList[i]
+              .toLowerCase()
+              .normalize("NFD")
+              .replace(/[\u0300-\u036f]/g, "")
+          )
+      ) {
         hideThread(threadTitles[j].closest("tr"));
       }
     }
