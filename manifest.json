@@ -1,6 +1,6 @@
 {
   "name": "ForoCoches Cleaner",
-  "version": "1.0",
+  "version": "0.1",
   "description": "Clean your unwanted threads from ForoCoches front page",
   "permissions": ["activeTab", "declarativeContent", "storage"],
   "background": {
