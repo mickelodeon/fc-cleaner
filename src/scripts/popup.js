@@ -52,9 +52,17 @@ keywordsReset.onclick = function () {
 
 const submitKeyword = function () {
   if (keywordsInput.value != "") {
+    if (localStorage.getItem("keywordsList") != null) {
+      if (localStorage.getItem("keywordsList").length >= 1) {
+        keywordsList = localStorage.getItem("keywordsList").split(",");
+      }
+    }
     keywordsList.push(keywordsInput.value);
     localStorage.setItem("keywordsList", keywordsList);
     updateList();
+    if (cleanerDisabled) {
+      keywordsList = [];
+    }
     keywordsInput.value = "";
     keywordsInput.focus();
   }
@@ -100,10 +108,18 @@ const updateRemovers = function () {
 
 const removeKeyword = function (index) {
   if (index > -1) {
+    if (localStorage.getItem("keywordsList") != null) {
+      if (localStorage.getItem("keywordsList").length >= 1) {
+        keywordsList = localStorage.getItem("keywordsList").split(",");
+      }
+    }
     keywordsList.splice(index, 1);
     localStorage.setItem("keywordsList", keywordsList);
+    updateList();
+    if (cleanerDisabled) {
+      keywordsList = [];
+    }
   }
-  updateList();
 };
 
 const updateContentInfo = function () {
@@ -126,9 +142,11 @@ if (localStorage.getItem("cleanerDisabled") == null) {
   }
 }
 
-if (localStorage.getItem("keywordsList") != null && !cleanerDisabled) {
+if (localStorage.getItem("keywordsList") != null) {
   if (localStorage.getItem("keywordsList").length >= 1) {
-    keywordsList = localStorage.getItem("keywordsList").split(",");
+    if (!cleanerDisabled) {
+      keywordsList = localStorage.getItem("keywordsList").split(",");
+    }
     updateList();
   }
 }
