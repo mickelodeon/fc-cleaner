@@ -93,7 +93,6 @@ body.disabled .header__logo {
   text-align: center;
   font-family: "ITC Bauhaus";
   font-size: 24px;
-  font-weight: bold;
   color: #000000;
   border-bottom: 1px solid var(--grey-light);
 }
@@ -107,7 +106,7 @@ body.disabled .header__logo {
   margin: 0 auto;
   padding-bottom: 1em;
   text-align: center;
-  font-weight: bold;
+  font-weight: 500;
 }
 
 .keywords__input {
