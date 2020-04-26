@@ -6,9 +6,6 @@ chrome.runtime.onInstalled.addListener(function () {
       {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
-            pageUrl: { hostContains: "developer.chrome.com" },
-          }),
-          new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { hostContains: ".forocoches.com" },
           }),
         ],
