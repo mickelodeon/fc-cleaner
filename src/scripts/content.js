@@ -13,6 +13,8 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 });
 
 const cleanThreads = function () {
+  console.log("clean threads!");
+
   const hiddenThreads = document.getElementsByClassName("hidden__thread");
   for (i = hiddenThreads.length - 1; i >= 0; i--) {
     hiddenThreads[i].classList.remove("hidden__thread");
