@@ -12,5 +12,16 @@ chrome.runtime.onInstalled.addListener(function () {
         actions: [new chrome.declarativeContent.ShowPageAction()],
       },
     ]);
+
+    chrome.browserAction.setBadgeBackgroundColor({
+      color: "#31d7a2",
+    });
+
+    chrome.storage.local.get(["hiddenThreads"], function (result) {
+      console.log("Value currently is " + result.hiddenThreads);
+      chrome.browserAction.setBadgeText({
+        text: result.hiddenThreads.toString(),
+      });
+    });
   });
 });

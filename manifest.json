@@ -2,12 +2,12 @@
   "name": "ShurCleaner",
   "version": "0.2",
   "description": "Clean your unwanted threads from ForoCoches front page",
-  "permissions": ["declarativeContent"],
+  "permissions": ["declarativeContent", "storage"],
   "background": {
     "scripts": ["src/scripts/background.js"],
     "persistent": false
   },
-  "page_action": {
+  "browser_action": {
     "default_popup": "src/templates/popup.html",
     "default_icon": {
       "16": "src/images/shurcleaner16.png",

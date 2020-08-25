@@ -39,10 +39,20 @@ const searchThreads = function (keywordsList) {
       }
     }
   }
+  updateThreadCounter(document.getElementsByClassName("hidden__thread"));
 };
 
 const hideThread = function (thread) {
   thread.classList.add("hidden__thread");
+};
+
+const updateThreadCounter = function (hiddenThreads) {
+  chrome.storage.local.set(
+    { hiddenThreads: hiddenThreads.length },
+    function () {
+      console.log("Value is set to " + hiddenThreads.length);
+    }
+  );
 };
 
 if (localStorage.getItem("keywordsList") !== null) {
