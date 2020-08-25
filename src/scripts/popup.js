@@ -30,6 +30,7 @@ popupSwitch.onclick = function () {
       updateContentInfo();
     }
   }
+  chrome.runtime.sendMessage({ status: "update" });
 };
 
 keywordsInput.addEventListener("keydown", function (e) {

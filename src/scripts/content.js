@@ -1,15 +1,13 @@
-var threadTitles = document.querySelectorAll('*[id^="thread_title_"]');
+const threadTitles = document.querySelectorAll('*[id^="thread_title_"]');
 
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-  sendResponse({ farewell: "Hi from Forocoches front page!" });
-
-  if (request.keywordsList.length >= 1) {
-    localStorage.setItem("keywordsList", request.keywordsList);
+chrome.runtime.onMessage.addListener(function (message) {
+  if (message.keywordsList.length >= 1) {
+    localStorage.setItem("keywordsList", message.keywordsList);
   } else {
     localStorage.removeItem("keywordsList");
   }
 
-  searchThreads(request.keywordsList);
+  searchThreads(message.keywordsList);
 });
 
 const cleanThreads = function () {
@@ -47,12 +45,8 @@ const hideThread = function (thread) {
 };
 
 const updateThreadCounter = function (hiddenThreads) {
-  chrome.storage.local.set(
-    { hiddenThreads: hiddenThreads.length },
-    function () {
-      console.log("Value is set to " + hiddenThreads.length);
-    }
-  );
+  chrome.runtime.sendMessage({ status: "update" });
+  chrome.storage.local.set({ hiddenThreads: hiddenThreads.length });
 };
 
 if (localStorage.getItem("keywordsList") !== null) {
