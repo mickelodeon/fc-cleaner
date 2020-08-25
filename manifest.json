@@ -1,6 +1,6 @@
 {
   "name": "ShurCleaner",
-  "version": "0.2",
+  "version": "0.3",
   "description": "Clean your unwanted threads from ForoCoches front page",
   "permissions": ["declarativeContent", "storage"],
   "background": {
