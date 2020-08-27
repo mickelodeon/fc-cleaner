@@ -11,10 +11,12 @@ const updateBadge = function () {
     });
   }
 
-  chrome.storage.local.get(["hiddenThreads"], function (result) {
-    chrome.browserAction.setBadgeText({
-      text: result.hiddenThreads.toString(),
-    });
+  chrome.storage.local.get("hiddenThreads", function (result) {
+    if (result.hiddenThreads !== null) {
+      chrome.browserAction.setBadgeText({
+        text: result.hiddenThreads.toString(),
+      });
+    }
   });
 };
 
